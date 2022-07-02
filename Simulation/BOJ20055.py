@@ -5,7 +5,7 @@ from collections import deque
 
 N, K = map(int, sys.stdin.readline().split())
 
-robot = deque([False for _ in range(2 * N)])  # 로봇 유무
+robot = deque([False for _ in range(N)])  # 로봇 유무
 A = deque(list(map(int, sys.stdin.readline().split())))  # 내구도
 
 level = 0  # 단계
