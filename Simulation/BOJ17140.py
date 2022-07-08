@@ -62,7 +62,7 @@ def R():
         # 수 커지는 순으로 정렬 / 0 제외
         count, line = get_sorted_line(sorted_dic)
 
-        A[y] = line  # 헹 변경
+        A[y] = line  # 행 변경
         m = max(m, 2 * count)
 
     # 열의 크기가 100을 넘어가는 경우
