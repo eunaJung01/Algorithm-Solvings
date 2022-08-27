@@ -4,8 +4,8 @@ import sys
 
 N, M = map(int, sys.stdin.readline().split())
 
-arr = [0 for _ in range(10)]
-status = [False for _ in range(10)]
+arr = [0 for _ in range(M + 1)]
+status = [False for _ in range(N + 1)]
 
 
 def func(k):  # 현재 k개까지의 수를 택했음
