@@ -5,7 +5,6 @@ import sys
 N, M = map(int, sys.stdin.readline().split())
 
 arr = [0 for _ in range(M + 1)]
-status = [False for _ in range(N + 1)]
 
 
 def func(k):
@@ -16,9 +15,8 @@ def func(k):
         return
 
     for i in range(1, N + 1):
-        if not status[i]:
-            arr[k] = i
-            func(k + 1)
+        arr[k] = i
+        func(k + 1)
 
 
 func(0)
