@@ -1,23 +1,24 @@
 # N과 M (8)
 
-from sys import stdin, stdout
+import sys
 
-input = stdin.readline
-print = stdout.write
+input = sys.stdin.readline
 
-n, m = map(int, input().split())
-a = sorted(list(map(int, input().split())))
-v = []
+N, M = map(int, input().split())
+numList = sorted(list(map(int, input().split())))
+arr = []
 
 
-def solve(index, cnt):
-    if cnt == m:
-        print(' '.join(map(str, v)) + '\n')
+def func(idx, cnt):
+    if cnt == M:
+        for i in range(M):
+            print(arr[i], end=' ')
+        print()
         return
-    for i in range(index, n):
-        v.append(a[i])
-        solve(i, cnt + 1)
-        v.pop()
+    for i in range(idx, N):
+        arr.append(numList[i])
+        func(i, cnt + 1)
+        arr.pop()
 
 
-solve(0, 0)
+func(0, 0)
