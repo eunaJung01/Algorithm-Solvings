@@ -6,21 +6,20 @@ input = sys.stdin.readline
 N, S = map(int, input().split())
 numList = list(map(int, input().split()))
 
-status = [False for _ in range(N)]
 result = 0
 
 
-def DFS(i, graph, total):
+def DFS(i, total):
     global result
 
     if total == S:
         result += 1
 
     for j in range(i + 1, N):
-        DFS(j, graph, total + graph[j])
+        DFS(j, total + numList[j])
 
 
 for i in range(N):
-    DFS(i, numList, numList[i])
+    DFS(i, numList[i])
 
 print(result)
