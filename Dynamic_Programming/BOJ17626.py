@@ -34,19 +34,16 @@
 # ---
 
 import sys
-from math import sqrt
 
-input = sys.stdin.readline
+N = int(sys.stdin.readline().strip())
+dp = [0, 1]
 
-n = int(input().strip())
-dp = [99999 for _ in range(50001)]
+for i in range(2, N + 1):
+    minValue = 1e9
+    j = 1
+    while j ** 2 <= i:
+        minValue = min(minValue, dp[i - (j ** 2)])
+        j += 1
+    dp.append(minValue + 1)
 
-for i in range(1, n + 1):
-    if int(sqrt(i)) * int(sqrt(i)) == i:
-        dp[i] = 1
-
-for i in range(1, n + 1):
-    for j in range(1, int(sqrt(i))):
-        dp[i] = min(dp[i], dp[j * j] + dp[i - j * j])
-
-print(dp[n])
+print(dp[N])
