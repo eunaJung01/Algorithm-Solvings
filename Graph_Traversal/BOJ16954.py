@@ -23,6 +23,8 @@ def BFS(y, x):
     q.append((y, x))
 
     while q:
+        visited = [[False for _ in range(8)] for _ in range(8)]
+
         for _ in range(len(q)):
             y, x = q.popleft()
 
@@ -33,10 +35,11 @@ def BFS(y, x):
             for i in range(9):
                 ny = y + dy[i]
                 nx = x + dx[i]
-                if 0 <= ny < 8 and 0 <= nx < 8 and not (ny, nx) in wall:
+                if 0 <= ny < 8 and 0 <= nx < 8 and not (ny, nx) in wall and not visited[ny][nx]:
                     if ny == 0 and nx == 7:
                         return 1
                     q.append((ny, nx))
+                    visited[ny][nx] = True
 
         new_wall = []
         for i, w in enumerate(wall):
