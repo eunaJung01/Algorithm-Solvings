@@ -13,7 +13,7 @@ kruskal = []
 for i in range(M):
     a, b, c = map(int, input().split())  # a 컴퓨터, b 컴퓨터, 비용 c
     kruskal.append((a, b, c))
-kruskal.sort(key=lambda x: x[2])  # 가중치 기준 내림차순 정렬
+kruskal.sort(key=lambda x: x[2])  # 가중치 기준 오름차순 정렬
 
 
 def find(x):
