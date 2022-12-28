@@ -11,7 +11,7 @@ kruskal = []
 for i in range(E):
     A, B, C = map(int, input().split())  # C는 가중치
     kruskal.append((A, B, C))
-kruskal.sort(key=lambda x: x[2])  # 가중치 기준 내림차순 정렬
+kruskal.sort(key=lambda x: x[2])  # 가중치 기준 오름차순 정렬
 
 
 def find(x):
