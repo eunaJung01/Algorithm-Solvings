@@ -24,6 +24,10 @@ for i in range(3):
 weight.sort(key=lambda x: x[2])
 
 
+def union(a, b):
+    parent[max(a, b)] = min(a, b)
+
+
 def find(x):
     if parent[x] != x:
         parent[x] = find(parent[x])
@@ -32,11 +36,8 @@ def find(x):
 
 result = 0
 for p1, p2, w in weight:
-    p1_parent, p2_parent = find(p1), find(p2),
-    if p1_parent != p2_parent:
-        if p1_parent > p2_parent:
-            parent[p1_parent] = p2_parent
-        else:
-            parent[p2_parent] = p1_parent
+    parent_p1, parent_p2 = find(p1), find(p2),
+    if parent_p1 != parent_p2:
         result += w
+        union(parent_p1, parent_p2)
 print(result)
