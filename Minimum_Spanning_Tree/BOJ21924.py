@@ -80,25 +80,31 @@ def find(x):
     return parent[x]
 
 
-min_weight = 0
+min_weight, edge_cnt = 0, 0
 for a, b, c in buildings:
     root_a, root_b = find(a), find(b)
     if root_a != root_b:
         union(root_a, root_b)
         min_weight += c
+        edge_cnt += 1
 
+# def isConnected():
+#     count = 0
+#     for i in range(1, N + 1):
+#         if parent[i] == i:
+#             count += 1
+#             if count >= 2:
+#                 return False
+#     return True
+#
+#
+# if isConnected():
+#     print(total_weight - min_weight)
+# else:
+#     print(-1)
 
-def isConnected():
-    count = 0
-    for i in range(1, N + 1):
-        if parent[i] == i:
-            count += 1
-            if count >= 2:
-                return False
-    return True
-
-
-if isConnected():
+# isConnected()를 통해 부모 노드들을 하나하나 확인할 필요 없이, 간선의 개수만으로 확인 가능
+if edge_cnt == N - 1:
     print(total_weight - min_weight)
 else:
     print(-1)
