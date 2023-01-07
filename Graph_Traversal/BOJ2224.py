@@ -72,13 +72,13 @@ for _ in range(N):  # 주어진 명제들 입력 받기
         props[Alpha2Idx(P)][Alpha2Idx(Q)] = True
 
 # 삼단 논법 적용
-for P in range(52):
-    for Q in range(52):
+for Q in range(52):
+    for P in range(52):
         for R in range(52):
             if P == Q or Q == R or R == P:
                 continue
-            if props[Q][P] and props[P][R]:  # 삼단 논법
-                props[Q][R] = True
+            if props[P][Q] and props[Q][R]:  # 삼단 논법
+                props[P][R] = True
 
 # 참인 명제들 저장
 proofs = []
