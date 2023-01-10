@@ -166,7 +166,7 @@ def move(direction, board):
     return new_board
 
 
-def DFS(cnt, board):
+def backtracking(cnt, board):
     global result
 
     if cnt == 5:
@@ -175,8 +175,8 @@ def DFS(cnt, board):
         return
 
     for i in range(4):
-        DFS(cnt + 1, move(i, board))
+        backtracking(cnt + 1, move(i, board))
 
 
-DFS(0, initial_board)
+backtracking(0, initial_board)
 print(result)
