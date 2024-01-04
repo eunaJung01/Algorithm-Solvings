@@ -58,6 +58,9 @@ void search() {
 }
 
 int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
     getline(cin, T);
     getline(cin, P);
     pattern = new int[P.size()];
