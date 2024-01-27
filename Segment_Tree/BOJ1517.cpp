@@ -4,7 +4,7 @@
 using namespace std;
 using ll = long long;
 
-const int MAX_NUMBERS = 500005;
+const int MAX_NUMBERS = 500001;
 
 pair<ll, int> A[MAX_NUMBERS];
 ll tree[MAX_NUMBERS * 4];
