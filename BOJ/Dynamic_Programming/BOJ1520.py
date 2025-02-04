@@ -2,28 +2,32 @@
 
 import sys
 
+sys.setrecursionlimit(10 ** 6)
 input = sys.stdin.readline
 
 N, M = map(int, input().split())
-altitude = [list(map(int, input().split())) for _ in range(N)]
+height = [list(map(int, input().split())) for _ in range(N)]
+dp = [[-1 for _ in range(M)] for _ in range(N)]
 
-dy = (-1, 1, 0, 0)
-dx = (0, 0, -1, 1)
+dy = (-1, 0, 1, 0)
+dx = (0, -1, 0, 1)
 
 
-def DFS(y, x):
-    if dp[y][x] != -1:
+def dfs(y, x):
+    if y == N - 1 and x == M - 1:
+        return 1
+    if dp[y][x] > -1:
         return dp[y][x]
 
     dp[y][x] = 0
     for i in range(4):
         ny = y + dy[i]
         nx = x + dx[i]
-        if 0 <= ny < N and 0 <= nx < M and altitude[ny][nx] < altitude[y][x]:
-            dp[y][x] += DFS(ny, nx)
+        if ny < 0 or ny >= N or nx < 0 or nx >= M:
+            continue
+        if height[ny][nx] < height[y][x]:
+            dp[y][x] += dfs(ny, nx)
     return dp[y][x]
 
 
-dp = [[-1 for _ in range(M)] for _ in range(N)]
-dp[N - 1][M - 1] = 1
-print(DFS(0, 0))
+print(dfs(0, 0))
